@@ -7,6 +7,8 @@ upl/imgs/*
 nbproject/
 app/config/myConfig.php
 app/config/database.php
+app/config/facebook.php
+app/config/loja.php
 *.sublime-project
 *.sublime-workspace
 .project
