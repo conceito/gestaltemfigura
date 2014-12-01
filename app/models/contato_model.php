@@ -29,7 +29,7 @@ class Contato_model extends CI_Model {
 
         $nome = $this->input->post('nome');
         $email = $this->input->post('email');
-//        $tel = $this->input->post('tel');
+        $tel = $this->input->post('tel');
         $assunto = 'Mensagem pelo site';
         $mensagem = $this->input->post('mensagem');
 
@@ -40,7 +40,7 @@ class Contato_model extends CI_Model {
          */
         $html = "Nome: " . $nome . "<br>" . PHP_EOL;
         $html .= "E-mail: " . $email . "<br>" . PHP_EOL;
-//        $html .= "Telefone: " . $tel . "<br>" . PHP_EOL;
+        $html .= "Telefone: " . $tel . "<br>" . PHP_EOL;
         $html .= "Mensagem: " . nl2br($mensagem) . "<br>" . PHP_EOL;
 
         /*

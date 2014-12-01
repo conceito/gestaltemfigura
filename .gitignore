@@ -4,6 +4,7 @@ vendor/
 app/logs/*
 upl/arqs/*
 upl/imgs/*
+emkt/
 nbproject/
 app/config/myConfig.php
 app/config/database.php
