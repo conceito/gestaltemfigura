@@ -6,8 +6,22 @@
 * @copyright 2010
 */
 
-class Calendario_model extends CI_Model {
-    function __construct()
+class Calendario_model extends MY_Model {
+
+
+	/**
+	 * Meta dados registrados para cursos
+	 * @var array
+	 */
+	protected $_metas = array(
+		array('meta_key' => 'coord_name', 'meta_type' => '', 'meta_value' => ''),
+		array('meta_key' => 'coord_email', 'meta_type' => '', 'meta_value' => ''),
+		array('meta_key' => 'num_vagas', 'meta_type' => '', 'meta_value' => ''),
+		array('meta_key' => 'inscricao_aberta', 'meta_type' => '', 'meta_value' => 'sim'),
+	);
+
+
+	function __construct()
     {
         parent::__construct();
     }
@@ -301,7 +315,9 @@ class Calendario_model extends CI_Model {
         
         // faz atualização das tags. precisa do ID, por isso está aqui
         $this->paginas_model->set_tag_conteudo($mytags, $var);
-        
+
+		// salva conteúdo meta
+		$this->saveMetas($var['id']);
 
         return $esteid;
     }

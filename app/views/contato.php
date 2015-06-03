@@ -80,6 +80,15 @@
             </div>
         </div>
 
+		<div class="control-group">
+            <label class="control-label" for="captcha">&nbsp;</label>
+            <div class="controls">
+				<label  for="mensagem">O que você está vendo?</label>
+				<?php echo $captcha?>
+				<input type="text" name="captcha" id="captcha" class="input-medium required" value="">
+            </div>
+        </div>
+
 
         <div class="form-actions">
         

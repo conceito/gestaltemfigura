@@ -51,7 +51,7 @@ $autoload['packages'] = array(APPPATH.'third_party');
 |	$autoload['libraries'] = array('database', 'session', 'xmlrpc');
 */
 
-$autoload['libraries'] = array('database', 'phpsess');
+$autoload['libraries'] = array('database', 'phpsess', 'Cms_metadados');
 
 
 /*

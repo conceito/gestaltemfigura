@@ -158,6 +158,8 @@ class Calendario extends Cms_Controller {
         $this->dados['botoes'] = $this->botoes;
         $this->dados['modulo'] = $modulo;
         $this->dados['c'] = $this->c;
+
+//		mybug(get_meta($this->dados['metas'], 'coord_email', null, true));
  
         $this->tabs['tab_title'][] = 'Informações';
         $this->tabs['tab_contt'][] = $this->load->view('cms/calendario/edita', $this->dados, true);

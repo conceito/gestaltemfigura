@@ -87,6 +87,7 @@ class Cms_Controller extends MX_Controller {
             
 
             $this->getDadosConteudo();
+			$this->getMetasConteudo();
             $this->getGaleria();
         }
 
@@ -336,6 +337,14 @@ class Cms_Controller extends MX_Controller {
 
 //        mybug($this->modulo);
     }
+
+	/**
+	 * Load and append ['metas'] to $this->dados array
+	 */
+	public function getMetasConteudo()
+	{
+		$this->dados['metas'] = $this->cms_metadados->getAllByContent($this->tmp['item_id']);
+	}
 
     /**
      * RETORNA ARRAY COM TODAS AS VAIÁVEIS PARA A GALERIA DE IMAGENS DO CONTEÚDO

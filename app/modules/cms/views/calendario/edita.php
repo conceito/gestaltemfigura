@@ -78,6 +78,17 @@
         
      </div>
 	<div class="help-block">Última atualização em <?php echo datetime_br($row['atualizado']);?></div>
+
+
+		<br/>
+		<?php $inscricao = set_value('inscricao_aberta', get_meta($metas, 'inscricao_aberta', null, true)) ?>
+		<select name="inscricao_aberta" id="inscricao_aberta">
+			<option value="sim" <?php echo set_select('inscricao_aberta', 'sim', $inscricao!='nao'?true:false)?>>Inscrição Aberta</option>
+			<option value="nao" <?php echo set_select('inscricao_aberta', 'nao', $inscricao=='nao'?true:false)
+			?>>Inscrição
+				Fechada</option>
+		</select>
+
 	</div><!-- .control-group -->
 	
     <div class="control-group box">
@@ -114,6 +125,17 @@
 	<label for="resumo" class="lb-full">Resumo</label>
     <textarea name="resumo" class="textarea-curto" id="resumo"><?php echo set_value('resumo', $row['resumo']);?></textarea>
 	       
+	</div><!-- .control-group -->
+
+	<div class="control-group box">
+
+		<label for="coord_name" class="lb-full">Coordenador(a)</label>
+		<input type="text" name="coord_name" class="input-longo" id="coord_name" placeholder="Nome" value="<?php
+		echo set_value('coord_name', get_meta($metas, 'coord_name', null, true))?>">
+		<label for="coord_email" class="lb-full">E-mail</label>
+		<input type="email" name="coord_email" class="input-longo" id="coord_email" placeholder="E-mail" value="<?php
+		echo set_value('coord_email', get_meta($metas, 'coord_email', null, true))?>">
+
 	</div><!-- .control-group -->
     
     <div class="control-group box">

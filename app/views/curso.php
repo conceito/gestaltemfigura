@@ -73,7 +73,7 @@
 
 	<?php
 	// do not show subscription form if not active
-	if($this->pagina['status'] == 1):
+	if($this->pagina['status'] == 1 && get_meta($metas, 'inscricao_aberta', null, true) != 'nao'):
 	?>
 
     <a name="subscribe"></a>
@@ -98,6 +98,7 @@
                 'class' => 'form-horizontal form-validate'
             )); ?>
             
+            <input type="hidden" name="id_curso" value="<?php echo $this->pagina['id'] ?>">
             <input type="hidden" name="nome_curso" value="<?php echo $this->pagina['titulo'] ?>">
             <input type="hidden" name="redirect" value="<?php echo $this->config->site_url().trim($this->uri->uri_string(), '/'); ?>#subscribe">
             
@@ -123,7 +124,30 @@
                     <input type="text" name="tel1" id="tel1" class="input-medium required" value="<?php echo set_value('tel1');?>">
                     <?php echo form_error('tel1'); ?>
                 </div>
-            </div>            
+            </div>
+
+			<?php if($this->pagina['nick'] == '4as'):?>
+			<div class="control-group">
+                <div class="controls">
+					<label class="-control-label" for="data">Data do evento no qual deseja se inscrever</label>
+                    <input type="text" name="data" id="data" class="input-medium required" value="<?php echo
+					set_value('data');?>" placeholder="dia / mês">
+                    <?php echo form_error('data'); ?>
+                </div>
+            </div>
+			<?php endif;?>
+
+            <?php if($this->pagina['id'] == 311):?>
+            <div class="control-group">
+                <label class="control-label" for="tel1">Escolha sua opção de pagamento</label>
+                <div class="controls">
+                    <label><input type="radio" name="pagamento" value="a vista" checked/> à vista com 10% de desconto: valor a pagar R$ 360,00 - vencimento cinco dias úteis a partir desta inscrição</label>
+                    <label><input type="radio" name="pagamento" value="parcelado"/> parcelado em duas parcelas no valor de R$200,00 - verifique as datas de vencimento</label>
+                    <input type="text" name="tel1" id="tel1" class="input-medium required" value="<?php echo set_value('tel1');?>">
+
+                </div>
+            </div>
+            <?php endif;?>
 
 
             <div class="form-actions">
@@ -138,6 +162,12 @@
         
     </div><!-- #subscribe-form -->
 
+	<?php
+	else:
+	?>
+	<div class="alert alert-info">
+		As inscrições estão encerradas.
+	</div>
 	<?php
 	endif;
 	?>

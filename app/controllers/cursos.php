@@ -50,8 +50,9 @@ class Cursos extends Frontend_Controller {
         // retorna dados da tabela cms_conteudo parseado
         $this->cms_conteudo->set_page();
         $this->pagina = $this->cms_conteudo->get_page();
-        
-        
+
+		$this->load->library('cms_metadados');
+		$view['metas'] = $this->cms_metadados->getAllByContent($this->pagina['id']);
         // retorna galeria
         $this->pagina['galeria'] = $this->cms_conteudo->get_page_gallery();
         // retorna os arquivos anexos
@@ -160,6 +161,8 @@ class Cursos extends Frontend_Controller {
         $this->form_validation->set_rules('email', 'E-mail', 'trim|required|valid_email');
         $this->form_validation->set_rules('tel1', 'Telefone', 'trim');
         $this->form_validation->set_rules('nome_curso', 'Nome do Curso', 'trim');
+        $this->form_validation->set_rules('pagamento', 'Pagamento', 'trim');
+        $this->form_validation->set_rules('data', 'Data', 'trim');
 
         $this->form_validation->set_message('required', 'Obrigatório');
         $this->form_validation->set_message('min_length', 'Obrigatório');
