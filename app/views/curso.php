@@ -137,14 +137,12 @@
             </div>
 			<?php endif;?>
 
-            <?php if($this->pagina['id'] == 311):?>
+            <?php if($this->pagina['id'] == 311 || $this->pagina['id'] == 350):?>
             <div class="control-group">
                 <label class="control-label" for="tel1">Escolha sua opção de pagamento</label>
                 <div class="controls">
-                    <label><input type="radio" name="pagamento" value="a vista" checked/> à vista com 10% de desconto: valor a pagar R$ 360,00 - vencimento cinco dias úteis a partir desta inscrição</label>
-                    <label><input type="radio" name="pagamento" value="parcelado"/> parcelado em duas parcelas no valor de R$200,00 - verifique as datas de vencimento</label>
-                    <input type="text" name="tel1" id="tel1" class="input-medium required" value="<?php echo set_value('tel1');?>">
-
+                    <label><input type="radio" name="pagamento" value="a vista" checked/> à vista</label>
+                    <label><input type="radio" name="pagamento" value="parcelado"/> parcelado</label>
                 </div>
             </div>
             <?php endif;?>

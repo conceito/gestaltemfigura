@@ -36,6 +36,7 @@ class Inicio extends Frontend_Controller {
         $this->title = '';
         $this->corpo = $this->load->view('homepage', $view, true);
 
+		$this->uri_seg = false;
         $this->templateRender();
     }
 

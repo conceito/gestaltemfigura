@@ -92,6 +92,7 @@ class Contato_model extends CI_Model
 		$data                 = $this->input->post('data');
 		$assunto              = 'Inscrição: ' . $curso_nome;
 
+
 		/*
 		 * monta html
 		 */
@@ -105,6 +106,7 @@ class Contato_model extends CI_Model
 		$html .= ($pagamento && strlen($pagamento) > 0) ? "Pagamento: " . $pagamento . "<br>" . PHP_EOL : '';
 		$html .= ($data) ? "Data: " . $data . "<br>" . PHP_EOL : '';
 		$html .= (strlen($obs)) ? "Observações: " . $obs . "<br>" . PHP_EOL : '';
+
 
 		/*
 		 * instancia library
@@ -124,7 +126,7 @@ class Contato_model extends CI_Model
 
 		$nomeDes  = $this->config->item('title');
 		$menHTML  = $html;
-		$menTXT   = $html;
+		$menTXT   = strip_tags($html);
 		$emailRem = $email;
 		$nomeRem  = $nome;
 
