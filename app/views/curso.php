@@ -73,9 +73,21 @@
 
 	<?php
 	// do not show subscription form if not active
-	if($this->pagina['status'] == 1 && get_meta($metas, 'inscricao_aberta', null, true) != 'nao'):
-	?>
+	$subscriptionStatus = get_meta($metas, 'inscricao_aberta', null, true);
 
+	if($subscriptionStatus === 'nao'):
+	?>
+		<div class="alert alert-success">
+			As inscrições não estão abertas.
+		</div>
+
+	<?php elseif($subscriptionStatus == 'encerrada'):?>
+
+		<div class="alert alert-info">
+			As inscrições estão encerradas.
+		</div>
+
+		<?php else:?>
     <a name="subscribe"></a>
     <div id="subscribe-form" class="<?php echo (isset($msg)) ? 'is-open' : ''; ?>">
         <div class="hd">
@@ -160,12 +172,6 @@
         
     </div><!-- #subscribe-form -->
 
-	<?php
-	else:
-	?>
-	<div class="alert alert-info">
-		As inscrições estão encerradas.
-	</div>
 	<?php
 	endif;
 	?>

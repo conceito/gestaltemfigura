@@ -85,8 +85,10 @@
 		<select name="inscricao_aberta" id="inscricao_aberta">
 			<option value="sim" <?php echo set_select('inscricao_aberta', 'sim', $inscricao!='nao'?true:false)?>>Inscrição Aberta</option>
 			<option value="nao" <?php echo set_select('inscricao_aberta', 'nao', $inscricao=='nao'?true:false)
-			?>>Inscrição
-				Fechada</option>
+			?>>Inscrição Fechada</option>
+			<option value="encerrada" <?php echo set_select('inscricao_aberta', 'encerrada',
+				$inscricao=='encerrada'?true:false)
+			?>>Inscrição Encerrada</option>
 		</select>
 
 	</div><!-- .control-group -->
