@@ -85,13 +85,14 @@ class Contato_model extends CI_Model
 		$tel1                 = $this->input->post('tel1');
 		$tel2                 = $this->input->post('tel2');
 		$pagamento            = $this->input->post('pagamento'); // optional
+		$tipo_inscricao       = $this->input->post('tipo_inscricao'); // optional
 		$modalidade_inscricao = $this->input->post('modalidade_inscricao');
 		$obs                  = $this->input->post('obs');
 		$curso_nome           = $this->input->post('nome_curso');
 		$cursoId              = $this->input->post('id_curso');
-		$data                 = $this->input->post('data');
+		$data                 = $this->input->post('data'); // optional
+		$estudante            = $this->input->post('estudante'); // optional
 		$assunto              = 'Inscrição: ' . $curso_nome;
-
 
 		/*
 		 * monta html
@@ -102,9 +103,18 @@ class Contato_model extends CI_Model
 		$html .= "E-mail: " . $email . "<br>" . PHP_EOL;
 		$html .= (strlen($tel1) > 0) ? "Telefone fixo: " . $tel1 . "<br>" . PHP_EOL : '';
 		$html .= (strlen($tel2) > 0) ? "Celular: " . $tel2 . "<br>" . PHP_EOL : '';
+
+		// optionals
 		$html .= (strlen($modalidade_inscricao) > 0) ? "Modalidade de inscrição: " . $modalidade_inscricao . "<br>" . PHP_EOL : '';
+
 		$html .= ($pagamento && strlen($pagamento) > 0) ? "Pagamento: " . $pagamento . "<br>" . PHP_EOL : '';
+
+		$html .= ($tipo_inscricao && strlen($tipo_inscricao) > 0) ? "Tipo: " . $tipo_inscricao . "<br>" . PHP_EOL : '';
+
 		$html .= ($data) ? "Data: " . $data . "<br>" . PHP_EOL : '';
+
+		$html .= ($estudante) ? "É estudante: " . $estudante . "<br>" . PHP_EOL : '';
+
 		$html .= (strlen($obs)) ? "Observações: " . $obs . "<br>" . PHP_EOL : '';
 
 

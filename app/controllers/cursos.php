@@ -72,10 +72,11 @@ class Cursos extends Frontend_Controller {
         // exibe lista de posts baseado nos argumentos abaixo:
         $view['posts'] = $this->cursos->get_abertos();
 
-	    if($this->pagina['status'] != 1)
-	    {
-		    $this->pagina['txt'] = '<p class="alert">Este curso não está disponível.</p>';
-	    }
+		if(($this->pagina === FALSE || $this->pagina['status'] != 1) && !$this->input->get('preview')){
+			$this->pagina['txt'] = '<p class="alert">Este curso não está disponível.</p>';
+		}
+
+
 
         $this->title = $this->pagina['titulo'];
         $this->corpo = $this->load->view('curso', $view, true);
@@ -163,6 +164,7 @@ class Cursos extends Frontend_Controller {
         $this->form_validation->set_rules('nome_curso', 'Nome do Curso', 'trim');
         $this->form_validation->set_rules('pagamento', 'Pagamento', 'trim');
         $this->form_validation->set_rules('data', 'Data', 'trim');
+        $this->form_validation->set_rules('estudante', 'Estudante', 'trim');
 
         $this->form_validation->set_message('required', 'Obrigatório');
         $this->form_validation->set_message('min_length', 'Obrigatório');

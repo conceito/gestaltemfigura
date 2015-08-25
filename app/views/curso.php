@@ -87,7 +87,8 @@
 			As inscrições estão encerradas.
 		</div>
 
-		<?php else:?>
+	<?php else:?>
+
     <a name="subscribe"></a>
     <div id="subscribe-form" class="<?php echo (isset($msg)) ? 'is-open' : ''; ?>">
         <div class="hd">
@@ -138,26 +139,14 @@
                 </div>
             </div>
 
-			<?php if($this->pagina['nick'] == '4as'):?>
-			<div class="control-group">
-                <div class="controls">
-					<label class="-control-label" for="data">Data do evento no qual deseja se inscrever</label>
-                    <input type="text" name="data" id="data" class="input-medium required" value="<?php echo
-					set_value('data');?>" placeholder="dia / mês">
-                    <?php echo form_error('data'); ?>
-                </div>
-            </div>
-			<?php endif;?>
-
-            <?php if($this->pagina['id'] == 311 || $this->pagina['id'] == 350):?>
-            <div class="control-group">
-                <label class="control-label" for="tel1">Escolha sua opção de pagamento</label>
-                <div class="controls">
-                    <label><input type="radio" name="pagamento" value="a vista" checked/> à vista</label>
-                    <label><input type="radio" name="pagamento" value="parcelado"/> parcelado</label>
-                </div>
-            </div>
-            <?php endif;?>
+			<?php
+			/**
+			 * Load the complementary form fields
+			 */
+			if(view_exist('curso/form-'.$this->pagina['nick'])){
+				$this->load->view('curso/form-'.$this->pagina['nick']);
+			}
+			?>
 
 
             <div class="form-actions">

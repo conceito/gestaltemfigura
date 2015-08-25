@@ -57,10 +57,10 @@ class Pages extends Frontend_Controller {
         // retorna dados da tabela cms_conteudo parseado
         $this->pagina = $this->cms_conteudo->get_page($page_id);
         
-        if($this->pagina === FALSE || $this->pagina['status'] != 1){
+        if(($this->pagina === FALSE || $this->pagina['status'] != 1) && !$this->input->get('preview')){
             redirect();
         }
-        
+
         // retorna galeria
         $this->pagina['galeria'] = $this->cms_conteudo->get_page_gallery();
         // retorna os arquivos anexos
